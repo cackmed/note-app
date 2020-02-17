@@ -12,7 +12,7 @@ export default function App() {
         <Route exact path ='/' component={NotesList} />
         <Route path='/notesDetail/:notes_id' component={notesDetail} />
         <Route path='/notesForm' component={notesForm} />
-        <Route Auth path='/auth' component={Auth} />
+        {/* <Route Auth path='/auth' component={Auth} /> */}
       </Router>
     </>
   );
