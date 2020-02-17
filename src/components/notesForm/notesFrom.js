@@ -38,3 +38,5 @@ const NotesForm = () => {
     </form>
   );
 };
+
+export default NotesForm;
