@@ -1,18 +1,23 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types'''
+import { useNotesById } from '../../hooks/getNotesById';
 
 
-const NotesForm = () => {
+
+const EditForm = ({ match }) => {
   const history = useHistory();
-  const [notesName, setNotesName] = useState('');
-  const [note, setNote] = useState('');
+  const { noteDetail } = 
+  useNotesById(match.params.note_id);
+  const [setNotesName] = useState();
+  const [setNote] = useState();
 
 
   
   const handleSubmit = event => {
     event.preventDefault();
     return fetch('', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
         origin: true
@@ -33,11 +38,19 @@ const NotesForm = () => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={notesName} onChange={({ target }) => setNotesName(target.value)}/>
-      <input type="text" value={note} onChange={({ target }) => setNote(target.value)}/>
+      <input type="text" value={noteDetail.title} onChange={({ target }) => setNotesName(target.value)}/>
+      <input type="text" value={noteDetail.text} onChange={({ target }) => setNote(target.value)}/>
       <input type="submit" value="Submit"/>
     </form>
   );
 };
 
-export default NotesForm;
+EditForm.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      note_id: PropTypes.string.isRequired,
+    }).isRequired
+  }).isRequired
+};
+
+export default EditForm;
