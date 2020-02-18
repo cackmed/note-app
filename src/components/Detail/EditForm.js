@@ -1,22 +1,23 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import PropTypes from 'prop-types'''
+import PropTypes from 'prop-types';
 import { useNotesById } from '../../hooks/getNotesById';
 
 
 
 const EditForm = ({ match }) => {
   const history = useHistory();
-  const { noteDetail } = 
-  useNotesById(match.params.note_id);
-  const [setNotesName] = useState();
-  const [setNote] = useState();
+  const { noteDetail, loading } = 
+  useNotesById(match.params.id);
+  const [notesName, setNotesName] = useState('');
+  const [note, setNote] = useState('');
+ 
 
 
   
   const handleSubmit = event => {
     event.preventDefault();
-    return fetch('', {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes/${match.params.id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -36,10 +37,19 @@ const EditForm = ({ match }) => {
         history.replace('/');
       });
   };
+
+  if(loading)
+    return (
+      <h1>Currently Loading</h1> 
+    );
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={noteDetail.title} onChange={({ target }) => setNotesName(target.value)}/>
-      <input type="text" value={noteDetail.text} onChange={({ target }) => setNote(target.value)}/>
+
+      <input type="text" value={notesName} placeholder={noteDetail.title} onChange={({ target }) => setNotesName(target.value)}/>
+
+      <textarea type="text" value={note} placeholder={noteDetail.text} onChange={({ target }) => setNote(target.value)}/>
+
       <input type="submit" value="Submit"/>
     </form>
   );
@@ -48,7 +58,7 @@ const EditForm = ({ match }) => {
 EditForm.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      note_id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
     }).isRequired
   }).isRequired
 };

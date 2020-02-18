@@ -1,18 +1,18 @@
 import { useState, useEffect } from 'react';
-import { getNotesById } from '../services/fetchNotesById';
+import { fetchNotesById } from '../services/fetchNotesById';
 
 export const useNotesById = id => {
   const [loading, setLoading] = useState(true);
-  const [notesDetail, setNotesDetail] = useState({});
+  const [noteDetail, setNoteDetail] = useState({});
 
   useEffect(() => {
     setLoading(true);
-    getNotesById(id)
+    fetchNotesById(id)
       .then(resObject => {
-        setNotesDetail(resObject);
+        setNoteDetail(resObject);
       })
       .finally(() => setLoading(false));
-  }, []);
+  }, [id]);
 
-  return { loading, notesDetail };
+  return { loading, noteDetail };
 };

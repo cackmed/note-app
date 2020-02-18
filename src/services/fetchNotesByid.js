@@ -1,6 +1,6 @@
-export const getNotesById = id => {
+export const fetchNotesById = id => {
   return fetch(
-    `https://cors-anywhere.herokuapp.com/${id}`,
+    `https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes/${id}`,
     {
       headers: {
         origin: null

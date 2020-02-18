@@ -1,6 +1,6 @@
 export const getNotes = () => {
   return fetch(
-    'https://cors-anywhere.herokuapp.com/',
+    'https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes/',
     {
       headers: {
         origin: null

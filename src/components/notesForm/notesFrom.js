@@ -7,11 +7,9 @@ const NotesForm = () => {
   const [notesName, setNotesName] = useState('');
   const [note, setNote] = useState('');
 
-
-  
   const handleSubmit = event => {
     event.preventDefault();
-    return fetch('', {
+    return fetch('https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,10 +29,11 @@ const NotesForm = () => {
         history.replace('/');
       });
   };
+
   return (
     <form onSubmit={handleSubmit}>
-      <input type="text" value={notesName} onChange={({ target }) => setNotesName(target.value)}/>
-      <input type="text" value={note} onChange={({ target }) => setNote(target.value)}/>
+      <input type="text" value={notesName} placeholder="Title" onChange={({ target }) => setNotesName(target.value)}/>
+      <textarea type="textarea" value={note} placeholder="note" onChange={({ target }) => setNote(target.value)}/>
       <input type="submit" value="Submit"/>
     </form>
   );

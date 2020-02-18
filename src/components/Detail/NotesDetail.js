@@ -1,22 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useNotesById } from '../../hooks/getNotesById';
-import { useHistory } from 'react-router-dom';
-import EditForm from './EditForm';
+import { useHistory, Link } from 'react-router-dom';
 
 const NotesDetail = ({ match }) => {
   const history = useHistory();
   const { noteDetail, loading } = 
-  useNotesById(match.params.note_id);
+  useNotesById(match.params.id);
+  console.log(noteDetail);
 
-  const renderEdit = () => {
-    return (
-      <EditForm />
-    );
-  };
 
   const handleDelete = event => {
-    return fetch('', {
+    return fetch(`https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes/${match.params.id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +37,9 @@ const NotesDetail = ({ match }) => {
     <article key={noteDetail._id}>
       <h2>{noteDetail.title}</h2>
       <p>{noteDetail.text}</p>
-      <button onClick={renderEdit}>Edit</button>
+      <Link to={`/editForm/${noteDetail._id}`}>
+        <button>Edit</button>
+      </Link>
       <button onClick={handleDelete}>Delete</button>
     </article>
   );
@@ -51,7 +48,7 @@ const NotesDetail = ({ match }) => {
 NotesDetail.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      note_id: PropTypes.string.isRequired,
+      id: PropTypes.string.isRequired,
     }).isRequired
   }).isRequired
 };
