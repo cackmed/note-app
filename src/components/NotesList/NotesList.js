@@ -22,7 +22,6 @@ const NotesList = () => {
   return <ul>
     {notesElements}
   </ul>;
-
 };
 
 export default NotesList;

@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo&display=swap');
+
+* {
+font-family: Arimo;
+}
+ul {
+  list-style-type: none;
+}
+nav {
+  display: inline-block;
+}
