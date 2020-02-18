@@ -7,8 +7,6 @@ const NotesDetail = ({ match }) => {
   const history = useHistory();
   const { noteDetail, loading } = 
   useNotesById(match.params.id);
-  console.log(noteDetail);
-
 
   const handleDelete = event => {
     return fetch(`https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes/${match.params.id}`, {
@@ -54,4 +52,3 @@ NotesDetail.propTypes = {
 };
 
 export default NotesDetail;
-

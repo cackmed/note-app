@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css?family=Arimo&display=swap');
 
-* {
-font-family: Arimo;
+html {
+  background-color: #fdf6e3;
+  color:  #073642;
+  font-family: Arimo;
+  text-align: center;
+}
+h1 {
+  color: #dc322f;
 }
 ul {
   list-style-type: none;
 }
 nav {
-  display: inline-block;
+  display: block;
+}
+a:visited {
+  color: #586e75;
 }

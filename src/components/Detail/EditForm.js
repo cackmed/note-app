@@ -3,8 +3,6 @@ import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useNotesById } from '../../hooks/getNotesById';
 
-
-
 const EditForm = ({ match }) => {
   const history = useHistory();
   const { noteDetail, loading } = 
@@ -12,9 +10,6 @@ const EditForm = ({ match }) => {
   const [notesName, setNotesName] = useState('');
   const [note, setNote] = useState('');
  
-
-
-  
   const handleSubmit = event => {
     event.preventDefault();
     return fetch(`https://cors-anywhere.herokuapp.com/https://noteymcnoteface.herokuapp.com/api/v1/notes/${match.params.id}`, {
