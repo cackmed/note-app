@@ -11,9 +11,14 @@ h1 {
 }
 ul {
   list-style-type: none;
+  text-align: left;
 }
 nav {
   display: block;
+}
+a:link {
+  text-decoration: none;
+  color: #073642;
 }
 a:visited {
   color: #586e75;

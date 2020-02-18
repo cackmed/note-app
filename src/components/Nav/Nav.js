@@ -9,13 +9,13 @@ const Nav = () => {
       <div className={styles.Navbar}>
         <nav>
           <NavLink to='/' >
-            <p>Notes</p>
+            <span>View Notes</span>
           </NavLink>
           <NavLink to='/notesForm'>
-            <p>Add a Note</p>
+            <span>Add a Note</span>
           </NavLink>
           <NavLink to='/auth'>
-            <p>Login/Sign-Up</p>
+            <span>Login/Sign-Up</span>
           </NavLink>    
         </nav>
       </div>
