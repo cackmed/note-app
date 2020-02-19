@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { useNotesById } from '../../hooks/getNotesById';
@@ -7,8 +7,13 @@ const EditForm = ({ match }) => {
   const history = useHistory();
   const { noteDetail, loading } = 
   useNotesById(match.params.id);
-  const [notesName, setNotesName] = useState('');
+  const [notesName, setNotesName] = useState(noteDetail.title || '');
   const [note, setNote] = useState('');
+
+  useEffect(()=> {
+    setNotesName(noteDetail.title);
+    setNote(noteDetail.text);
+  }, [loading]);
  
   const handleSubmit = event => {
     event.preventDefault();
@@ -40,9 +45,11 @@ const EditForm = ({ match }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-
-      <input type="text" value={notesName} placeholder={noteDetail.title} onChange={({ target }) => setNotesName(target.value)}/>
-
+      
+      <label>Title</label>
+      <input  type="text" value={notesName} placeholder={noteDetail.title} onChange={({ target }) => setNotesName(target.value)}/>
+      
+      <label>Text</label>
       <textarea type="text" value={note} placeholder={noteDetail.text} onChange={({ target }) => setNote(target.value)}/>
 
       <input type="submit" value="Submit"/>
