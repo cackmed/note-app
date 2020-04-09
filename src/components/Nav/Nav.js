@@ -1,24 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import styles from './Nav.css';
 
 const Nav = () => {
   return (
-    <nav>
-      <h1>Notes-App: a derivative app of limited ambitions</h1>
-
-      <ul>
-        <NavLink to='/' >
-          <li>Notes</li>
-        </NavLink>
-        <NavLink to='/notesForm'>
-          <li>Add a Note</li>
-        </NavLink>
-        <NavLink to='/auth'>
-          <li>Login/Sign-Up</li>
-        </NavLink>
-        
-      </ul>
-    </nav>
+    <>
+      <h1>Notes-App: a Derivative App of Limited Ambitions</h1>
+      <div className={styles.Navbar}>
+        <nav>
+          <NavLink to='/' >
+            <span>View Notes</span>
+          </NavLink>
+          <NavLink to='/notesForm'>
+            <span>Add a Note</span>
+          </NavLink>
+          <NavLink to='/auth'>
+            <span>Login/Sign-Up</span>
+          </NavLink>    
+        </nav>
+      </div>
+    </>
   );
 };
 export default Nav;

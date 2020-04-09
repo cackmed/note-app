@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import NotesForm from '../components/NotesForm/NotesFrom';
+import NotesForm from './notesForm/notesForm';
 import Nav from '../components/Nav/Nav';
 import NotesDetail from '../components/Detail/NotesDetail';
 import NotesList from '../components/NotesList/NotesList';
 import EditForm from '../components/Detail/EditForm';
-
+import './App.css';
 
 export default function App() {
   return (

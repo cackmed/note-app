@@ -19,10 +19,14 @@ const NotesList = () => {
       </Link>
     );
   });
-  return <ul>
-    {notesElements}
-  </ul>;
-
+  return (
+    <>
+      <h2>My Cool Notes</h2>
+      <ul>
+        {notesElements}
+      </ul>
+    </>
+  );
 };
 
 export default NotesList;

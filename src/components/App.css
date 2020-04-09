@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Arimo&display=swap');
+
+html {
+  background-color: #fdf6e3;
+  color:  #073642;
+  font-family: Arimo;
+  text-align: center;
+}
+h1 {
+  color: #dc322f;
+}
+ul {
+  list-style-type: none;
+  text-align: left;
+}
+nav {
+  display: block;
+}
+a:link {
+  text-decoration: none;
+  color: #073642;
+}
+a:visited {
+  color: #586e75;
+}
+button{
+  border-radius: .25em;
+  background-color: #eee8d5;
+  border-color: #6c71c4;
+  padding: 8px 16px;
+  text-decoration: none;
+  font-family: Arimo;
+  font-size: 1em;
+  display: inline-block;
+  margin-left: 10px;
+  margin-right: 10px;
+}

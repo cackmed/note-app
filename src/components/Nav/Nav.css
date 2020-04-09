@@ -1,0 +1,11 @@
+.Navbar {
+  background-color: #eee8d5;
+  font-size: 1.5rem;
+  border-radius: .25em;
+  display: inline-flex;
+  justify-content: space-around;
+    span{
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+}
